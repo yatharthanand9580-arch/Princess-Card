@@ -3,195 +3,158 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Princess Day — A Note For You, Baccha 💝</title>
+  <title>Princess Day — A Note For You, Baccha ♡</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- ALL PAGES ARE SECTION ELEMENTS. Only one visible at a time. -->
-  <main id="card" class="touch-friendly">
-    <!-- Page 1 - Welcome -->
-    <section id="page-1" class="page">
-      <div class="bg pastel-pink"></div>
-      <div class="content center">
-        <h1 class="title">A Note For You, Baccha 💝</h1>
-        <h2 class="greeting">Hey Princess! 💕</h2>
-        <p class="subtitle">I wanted to do something special for you…</p>
+  <!-- HEART PARTICLES -->
+  <div id="particles"></div>
 
-        <button class="btn primary" id="open-heart">Open My Heart ♡</button>
-      </div>
+  <!-- --- PAGE 1: Welcome --- -->
+  <section id="page1" class="page">
+    <div class="center-card">
+      <h1 class="title">A Note For You, Baccha 💝</h1>
+      <h2 class="greeting">Hey Princess! 💕</h2>
+      <p class="subtitle">I wanted to do something special for you…</p>
+      <button id="openHeartBtn" class="btn">Open My Heart ♡</button>
+    </div>
+    <img src="assets/stickers/cute-cat.png" alt="" class="sticker sticker-left">
+    <img src="assets/stickers/sparkle-1.png" alt="" class="sticker sticker-right">
+  </section>
 
-      <!-- decorative -->
-      <canvas id="particles"></canvas>
-      <img src="assets/stickers/cute-cat.png" alt="" class="sticker cat" />
-      <img src="assets/stickers/sparkle-1.png" alt="" class="sticker sparkle s1" />
-      <img src="assets/stickers/sparkle-2.png" alt="" class="sticker sparkle s2" />
-    </section>
-
-    <!-- Page 2 - Envelope animation -->
-    <section id="page-2" class="page hidden">
-      <div class="bg pink-sky"></div>
-      <div class="content center">
-        <div id="envelope-wrap" class="envelope-wrap">
-          <div id="envelope" class="envelope">
-            <div class="flap"></div>
-            <div class="letter"> 
-              <div class="letter-inner">
-                <h3>To My Princess</h3>
-                <p class="letter-preview">Open me... 💕</p>
-              </div>
-            </div>
-          </div>
+  <!-- --- PAGE 2: Envelope Animation --- -->
+  <section id="page2" class="page hidden">
+    <div class="envelope-wrap">
+      <div class="envelope" id="envelope">
+        <div class="flap" id="flap"></div>
+        <div class="letter" id="letter">
+          <p>To my Princess, open me... ♡</p>
         </div>
-        <p class="hint">Tap the envelope to open ✨</p>
       </div>
-      <img src="assets/stickers/heart-float.png" alt="" class="sticker heart-float" />
-    </section>
+      <p class="hint">Tap the envelope to open (or double-tap to skip)</p>
+    </div>
+  </section>
 
-    <!-- Page 3 - Love letter -->
-    <section id="page-3" class="page hidden">
-      <div class="bg purple-grad"></div>
-      <div class="content card-container">
-        <div class="love-card">
-          <h2 class="card-title">To My Princess, JAANA 💜</h2>
-          <div class="message">
-            <p>You are my princess, JAANA👸</p>
-            <p>I love you so much, BACCHA😙</p>
-            <p>You are my everything🫶</p>
-            <p>I am always with you, I love you every day🤗</p>
-            <p>My love will never decrease for you💗</p>
+  <!-- --- PAGE 3: Love Letter --- -->
+  <section id="page3" class="page hidden">
+    <div class="love-container card-fade">
+      <h2 class="letter-title">You are my princess, <span>JAANA</span>.</h2>
+      <div class="love-message">
+        <p>I love you so much, <strong>BACCHA</strong>.</p>
+        <p>You are my everything.</p>
+        <p>I am always with you, I love you every day.</p>
+        <p>My love will never decrease for you.</p>
+      </div>
+      <img src="assets/stickers/cute-sticker.png" class="floating-sticker" alt="">
+      <button id="continueFromLetter" class="btn">Continue ♡</button>
+    </div>
+  </section>
+
+  <!-- --- PAGE 4: Playlist Artwork --- -->
+  <section id="page4" class="page hidden">
+    <div class="playlist-art">
+      <h2>💜 A Dedicated Playlist For You 🎧</h2>
+      <p class="muted">Choose a track to start vibing 💕</p>
+
+      <div class="art-cards" id="artCards">
+        <!-- Each card is created in HTML for clarity -->
+        <div class="art-card" data-track="0">
+          <img src="assets/gifs/art1.gif" alt="art1">
+          <p class="song-title">Tumsa Koi Pyaara</p>
+        </div>
+        <div class="art-card" data-track="1">
+          <img src="assets/gifs/art2.gif" alt="art2">
+          <p class="song-title">Hume Tumse Pyaar Kitna</p>
+        </div>
+        <div class="art-card" data-track="2">
+          <img src="assets/gifs/art3.gif" alt="art3">
+          <p class="song-title">Ye Tune Kya Kiya</p>
+        </div>
+      </div>
+
+      <p id="artCaption" class="muted hidden small-caption">You make this feel better.</p>
+      <button id="toSongPage" class="btn">Continue to Next</button>
+    </div>
+  </section>
+
+  <!-- --- PAGE 5: Playlist (Actual Songs) --- -->
+  <section id="page5" class="page hidden">
+    <div class="songs-wrap">
+      <h2>🎶 Now choose a song</h2>
+      <div class="tracks" id="tracks">
+        <div class="track" data-src="assets/music/tumsa-koi-pyaara.mp3">
+          <div class="track-info">
+            <p class="track-title">Tumsa Koi Pyaara</p>
+            <p class="now">Tap to Play</p>
           </div>
-          <img src="assets/stickers/cute-sticker.png" alt="" class="right-sticker"/>
+          <div class="play-pulse"></div>
         </div>
 
-        <button class="btn" id="continue-from-letter">Continue ♡</button>
-      </div>
-    </section>
-
-    <!-- Page 4 - Playlist Artwork -->
-    <section id="page-4" class="page hidden">
-      <div class="bg dreamy-purple"></div>
-      <div class="content">
-        <h2 class="section-title">A Dedicated Playlist For You 🎧</h2>
-        <p class="section-sub">Choose a track to start vibing 💕</p>
-
-        <div class="artwork-row" id="artwork-list" tabindex="0">
-          <!-- artwork cards -->
-          <div class="art-card" data-track="0">
-            <img src="assets/artwork/art1.png" alt="Tumsa Koi Pyaara">
-            <h4>Tumsa Koi Pyaara</h4>
+        <div class="track" data-src="assets/music/hume-tumse-pyaar-kitna.mp3">
+          <div class="track-info">
+            <p class="track-title">Hume Tumse Pyaar Kitna</p>
+            <p class="now">Tap to Play</p>
           </div>
-          <div class="art-card" data-track="1">
-            <img src="assets/artwork/art2.png" alt="Hume Tumse Pyaar Kitna">
-            <h4>Hume Tumse Pyaar Kitna</h4>
-          </div>
-          <div class="art-card" data-track="2">
-            <img src="assets/artwork/art3.png" alt="Ye Tune Kya Kiya">
-            <h4>Ye Tune Kya Kiya</h4>
-          </div>
+          <div class="play-pulse"></div>
         </div>
 
-        <p id="artwork-note" class="artwork-note">You make this feel better. ✨</p>
-        <button class="btn" id="continue-to-songs">Continue to Next</button>
+        <div class="track" data-src="assets/music/ye-tune-kya-kiya.mp3">
+          <div class="track-info">
+            <p class="track-title">Ye Tune Kya Kiya</p>
+            <p class="now">Tap to Play</p>
+          </div>
+          <div class="play-pulse"></div>
+        </div>
       </div>
-    </section>
 
-    <!-- Page 5 - Actual songs player -->
-    <section id="page-5" class="page hidden">
-      <div class="bg soft-pastel"></div>
-      <div class="content">
-        <h2 class="section-title">Now playing area 🎶</h2>
+      <div id="nowPlaying" class="hidden now-playing">
+        <p>Now Playing… <span id="nowTitle"></span></p>
+      </div>
 
-        <div class="tracks">
-          <div class="track" data-index="0">
-            <div class="track-art"><img src="assets/artwork/art1.png" alt=""></div>
-            <div class="track-meta">
-              <h4>Tumsa Koi Pyaara</h4>
-              <div class="controls">
-                <button class="play-btn">Play</button>
-                <span class="now-playing"> </span>
-              </div>
-            </div>
+      <button id="toSpecialMsg" class="btn">Continue ♡</button>
+    </div>
+  </section>
+
+  <!-- --- PAGE 6: Special Messages --- -->
+  <section id="page6" class="page hidden">
+    <div class="special-wrap">
+      <h2>🌸💗 Special Messages</h2>
+
+      <div class="message-cards">
+        <div class="flip-card" data-index="0">
+          <div class="face front">
+            <img src="assets/gifs/bear1.gif" alt="">
           </div>
-
-          <div class="track" data-index="1">
-            <div class="track-art"><img src="assets/artwork/art2.png" alt=""></div>
-            <div class="track-meta">
-              <h4>Hume Tumse Pyaar Kitna</h4>
-              <div class="controls">
-                <button class="play-btn">Play</button>
-                <span class="now-playing"> </span>
-              </div>
-            </div>
-          </div>
-
-          <div class="track" data-index="2">
-            <div class="track-art"><img src="assets/artwork/art3.png" alt=""></div>
-            <div class="track-meta">
-              <h4>Ye Tune Kya Kiya</h4>
-              <div class="controls">
-                <button class="play-btn">Play</button>
-                <span class="now-playing"> </span>
-              </div>
-            </div>
+          <div class="face back">
+            <p>I Love You So Much, Baccha. 💕</p>
           </div>
         </div>
 
-        <!-- placeholder audio elements - replace src with your mp3 files -->
-        <audio id="audio-0" src="assets/music/tumsa_koi_pyaara.mp3" preload="none"></audio>
-        <audio id="audio-1" src="assets/music/hume_tumse_pyaar_kitna.mp3" preload="none"></audio>
-        <audio id="audio-2" src="assets/music/ye_tune_kya_kiya.mp3" preload="none"></audio>
-
-        <button class="btn" id="continue-from-player">Next ♡</button>
-      </div>
-    </section>
-
-    <!-- Page 6 - Special messages (last) -->
-    <section id="page-6" class="page hidden last-page">
-      <div class="bg soft-gradient"></div>
-      <div class="content">
-        <h2 class="section-title">Special Messages 🌸💗</h2>
-
-        <div class="stacked-cards">
-          <div class="flip-card" tabindex="0">
-            <div class="flip-inner">
-              <div class="flip-front">
-                <img src="assets/gifs/bear1.gif" alt="bear1">
-              </div>
-              <div class="flip-back">
-                <p>I Love You So Much, Baccha. 💕</p>
-              </div>
-            </div>
+        <div class="flip-card" data-index="1">
+          <div class="face front">
+            <img src="assets/gifs/bear2.gif" alt="">
           </div>
-
-          <div class="flip-card" tabindex="0">
-            <div class="flip-inner">
-              <div class="flip-front">
-                <img src="assets/gifs/bear2.gif" alt="bear2">
-              </div>
-              <div class="flip-back">
-                <p>You Are My Everything, Jaana. 💗</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="flip-card" tabindex="0">
-            <div class="flip-inner">
-              <div class="flip-front">
-                <img src="assets/gifs/bear3.gif" alt="bear3">
-              </div>
-              <div class="flip-back">
-                <p>Once Again, Happy Princess Day, Pagli! 🌸</p>
-              </div>
-            </div>
+          <div class="face back">
+            <p>You Are My Everything, Jaana. 💗</p>
           </div>
         </div>
 
-        <div class="replay-wrap">
-          <button id="replay" class="btn big">Replay The Card ♡</button>
+        <div class="flip-card" data-index="2">
+          <div class="face front">
+            <img src="assets/gifs/bear3.gif" alt="">
+          </div>
+          <div class="face back">
+            <p>Once Again, Happy Princess Day, Pagli! 🌸</p>
+          </div>
         </div>
       </div>
-    </section>
-  </main>
+
+      <button id="replayBtn" class="btn big">Replay The Card ♡</button>
+    </div>
+  </section>
+
+  <audio id="bgAudio" src="" preload="none"></audio>
 
   <script src="script.js"></script>
 </body>
